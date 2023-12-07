@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="188dp"
+    android:layout_height="wrap_content"
+   android:layout_marginLeft="10dp"
+    android:layout_marginTop="16dp"
+
+    android:layout_marginRight="16dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="6dp">
+
+    <LinearLayout
+        android:layout_width="188dp"
+        android:layout_height="250dp"
+        android:layout_marginLeft="32dp"
+
+
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/bogoc3"
+        android:orientation="vertical"
+        android:paddingLeft="32dp">
+
+        <ImageView
+            android:id="@+id/img_phone"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:scaleType="fitStart"
+            android:src="@drawable/ic_launcher_background" />
+
+        <TextView
+            android:id="@+id/tv_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ten dien thoai"
+            android:textColor="#C61434"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/tv_Count"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Gia:"
+            android:textColor="#C61434"
+            android:textSize="18dp" />
+
+        <ImageView
+            android:id="@+id/yeuthich"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/trai_tim" />
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

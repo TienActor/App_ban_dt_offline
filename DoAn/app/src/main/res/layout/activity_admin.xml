@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:fitsSystemWindows="true">
+
+    <Button
+        android:id="@+id/adminThoat"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="180dp"
+        android:layout_marginTop="-85dp"
+        android:backgroundTint="#5a31cc"
+        android:drawableBottom="@drawable/baseline_exit_to_app_24"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:orientation="vertical"
+        android:layout_marginTop="-120dp">
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="500dp"
+            android:layout_marginTop="-120dp"
+            app:srcCompat="@drawable/top_background" />
+        <ImageView
+            android:id="@+id/iv_Avatar"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_marginTop="-220dp"
+            android:layout_gravity="center"
+            android:src="@drawable/hinh_admin" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_user_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textColor="@android:color/black"
+        android:text="Admin"
+        android:layout_marginTop="-38dp"
+        android:gravity="center"
+        android:textStyle="bold"
+
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+    <TextView
+        android:id="@+id/tv_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:text="namdeptrai@123.com"
+        android:layout_marginTop="8dp"
+        android:textStyle="bold"
+
+        android:textSize="25sp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:headerLayout="@layout/header_menu"
+        android:gravity="center"
+        >
+        <Button
+            android:id="@+id/btn_KhachHang"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:text="Quản lí Khách hàng"
+            android:layout_marginBottom="10dp"
+
+            android:layout_marginTop="8dp"
+            />
+
+        <Button
+            android:id="@+id/btn_Sanpham"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:text="Quản lí Sản phẩm"
+            android:layout_marginBottom="10dp"
+
+            android:layout_marginTop="8dp"/>
+        <Button
+            android:gravity="center"
+            android:id="@+id/btn_Voucher"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+
+            android:text="Quản lí mã giảm giá" />
+
+    </LinearLayout>
+
+</LinearLayout>

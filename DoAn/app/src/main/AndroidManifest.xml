@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.DoAn_Sale"
+        tools:targetApi="31">
+        <activity
+            android:name=".ui.SearchResults"
+            android:exported="false" />
+        <activity
+            android:name=".User.ThanhToanActivity"
+            android:exported="true"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="app"
+                    android:scheme="demozpdk" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Admin.AddVoucherActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Admin.VoucherListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ThankYouActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DonHangActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Product.ChiTietSanPhamActivity"
+            android:exported="false" />
+        <activity
+            android:name=".User.GioHangActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Product.View_Pro_List_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Admin.Admin_User_Activity"
+            android:exported="true" />
+        <activity
+            android:name=".Product.Product_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Admin.AdminActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Account.RegisterActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Account.LoginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:padding="40dp">
+
+    <TextView
+        android:id="@+id/tvEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Thông tin chi tiết"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:textColor="@color/black"/>
+
+    <EditText
+        android:id="@+id/edImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Hình"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"/>
+
+    <EditText
+        android:id="@+id/edproName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Tên sản phẩm"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"/>
+    <EditText
+        android:id="@+id/edcateID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="ID thể loại"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"/>
+    <EditText
+        android:id="@+id/edproPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Giá"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"/>
+    <EditText
+        android:id="@+id/edproDes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Mô tả sản phẩm"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"/>
+</LinearLayout>
