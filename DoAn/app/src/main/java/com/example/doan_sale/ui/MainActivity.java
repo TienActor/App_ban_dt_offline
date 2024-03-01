@@ -1,5 +1,4 @@
 package com.example.doan_sale.ui;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,7 +6,6 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -15,9 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-
 import androidx.appcompat.widget.Toolbar;
-
 import com.example.doan_sale.Account.LoginActivity;
 import com.example.doan_sale.LSDH.LSDHFragment;
 import com.example.doan_sale.R;
@@ -31,22 +27,15 @@ import com.example.doan_sale.fragment.VoucherFragment;
 import com.example.doan_sale.model.GioHang;
 import com.example.doan_sale.model.Product;
 import com.google.android.material.navigation.NavigationView;
-
 import java.util.ArrayList;
-
 public class MainActivity extends AppCompatActivity implements MainAdapter.MainCallBack {
-
 Button backl;
-
     MainAdapter mainAdapter;
 ArrayList<Product> lstPro;
     public static ArrayList<GioHang> manggiohang;
     public static ArrayList<Product> mangyeuthich;
-
     private DrawerLayout drawerLayout;
     DBHelper dbHelper = new DBHelper(this);
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,7 +64,6 @@ ArrayList<Product> lstPro;
         // khởi tạo menu
         initMenu();
         NavigationView navigationView = findViewById(R.id.nav_view);
-
         // Cập nhật menu ngay lúc khởi tạo activity
         updateMenu(navigationView);
     }
@@ -85,37 +73,28 @@ ArrayList<Product> lstPro;
         switch (item.getItemId()){
             case R.id.menugiohang:
                 Intent intent=new Intent(getApplicationContext(), GioHangActivity.class);
-                startActivity(intent);
-        }
+                startActivity(intent);}
         return super.onOptionsItemSelected(item);
     }
-
-
     @Override
     public void onItemClick(int id) {
-
     }
     void initMenu()
     {
         Toolbar toolbar = findViewById(R.id.toolbar);
         NavigationView navigationView = findViewById(R.id.nav_view);
-
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-
         // Add a drawer listener to the ActionBarDrawerToggle object
         drawerLayout.addDrawerListener(new ActionBarDrawerToggle(this, drawerLayout, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
-
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
                 updateMenu(navigationView);
             }
         });
-
         toggle.syncState();
-
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -138,7 +117,6 @@ ArrayList<Product> lstPro;
                         fmNew = new SettingFragment();
                         loadFragment(fmNew);
                         return  true;
-
                     case R.id.nav_logout:
                         fmNew = new LogOutFragment();
                         loadFragment(fmNew);
@@ -152,7 +130,6 @@ ArrayList<Product> lstPro;
                         startActivity(intent);
                         drawerLayout.closeDrawer(GravityCompat.START); // Close the drawer
                         return true;
-
                     case R.id.nav_voucher:
                         fmNew = new VoucherFragment();
                         loadFragment(fmNew);
@@ -167,9 +144,7 @@ ArrayList<Product> lstPro;
     private boolean isLoggedIn() {
         invalidateOptionsMenu();
         SharedPreferences preferences = getSharedPreferences("USER_INFO", MODE_PRIVATE);
-
         return preferences.contains("username"); // or some other user identifier
-
     }
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
@@ -185,7 +160,6 @@ ArrayList<Product> lstPro;
         MenuItem InfoItem = menu.findItem(R.id.nav_mnaccount);
         MenuItem lsdhItem = menu.findItem(R.id.nav_lsdh);
         MenuItem voucher = menu.findItem(R.id.nav_voucher);
-
         if (isLoggedIn()) {
             logoutItem.setVisible(true);
             loginItem.setVisible(false);
@@ -200,7 +174,6 @@ ArrayList<Product> lstPro;
             voucher.setVisible(false);
         }
     }
-
     void loadFragment(Fragment fmNew)
     {
         FragmentTransaction fmTran= getSupportFragmentManager().beginTransaction();
