@@ -1,5 +1,4 @@
 package com.example.doan_sale.ui;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,14 +6,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.doan_sale.R;
 import com.example.doan_sale.model.GioHang;
 import com.example.doan_sale.model.Product;
-
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,12 +21,9 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
     private MainCallBack mainCallBack;
     private ItemClickListener itemClickListener;
     int Id=0;
-
     int Giachitiet=0;
-
     // ... Các thuộc tính và constructor đã có
     private ArrayList<Product> originalList; // Danh sách ban đầu
-
     // Khởi tạo với danh sách ban đầu
     // Khởi tạo với danh sách và context
     public MainAdapter(Context context, ArrayList<Product> lstPro, ItemClickListener itemClickListener) {
@@ -39,17 +32,12 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
         this.itemClickListener = itemClickListener;
         this.originalList = new ArrayList<>(lstPro);
     }
-
-
     public void setMainCallBack(MainCallBack mainCallBack) {
         this.mainCallBack = mainCallBack;
     }
-
     public MainAdapter(ArrayList<Product> lstPro) {
         this.lstPro = lstPro;
     }
-
-
     @NonNull
     @Override
     public MainViewHolder  onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -57,11 +45,9 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
         LayoutInflater inflater = LayoutInflater.from(mcontext);
         //nạp layout cho View biểu diễn phần tử user
         View proView= inflater.inflate(R.layout.layoutitem_main, parent, false);
-        //
         MainViewHolder mainViewHolder = new MainViewHolder(proView);
         return mainViewHolder;
     }
-
     @Override
     public void onBindViewHolder(@NonNull MainViewHolder holder, int position) {
         Product item = lstPro.get(position);
@@ -73,9 +59,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
         // Lay su kien
         holder.itemView.setOnClickListener(view -> {
             if (mainCallBack != null) {
-                mainCallBack.onItemClick(item.getProID());
-            }
-        });
+                mainCallBack.onItemClick(item.getProID());}});
         holder.itemView.setOnClickListener(view -> {
             if (itemClickListener != null) {
                 itemClickListener.onItemCick(item);
@@ -111,15 +95,12 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
         }
         notifyDataSetChanged(); // Thông báo rằng dữ liệu đã thay đổi để cập nhật UI
     }
-
     // Reset danh sách về ban đầu
     public void reset() {
         lstPro.clear();
         lstPro.addAll(originalList);
         notifyDataSetChanged();
     }
-
-
     @Override
     public int getItemCount() {
         return lstPro.size();
@@ -132,8 +113,6 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
         TextView proName;
         TextView proPrice;
         ImageView ivthich;
-
-
         public MainViewHolder(@NonNull View itemView) {
             super(itemView);
             imPro = itemView.findViewById(R.id.img_phone);
