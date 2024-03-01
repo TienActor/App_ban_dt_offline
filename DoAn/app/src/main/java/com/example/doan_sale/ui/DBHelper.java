@@ -1,12 +1,10 @@
 package com.example.doan_sale.ui;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-
 import com.example.doan_sale.Account.LoginValidation;
 import com.example.doan_sale.Product.ProDataQuery;
 import com.example.doan_sale.model.GioHang;
@@ -16,19 +14,15 @@ import com.example.doan_sale.model.Voucher;
 import com.example.doan_sale.model.user;
 import com.example.doan_sale.Account.LoginActivity;
 import com.example.doan_sale.Account.RegisterActivity;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-
 import okhttp3.internal.Util;
-
 public class DBHelper extends SQLiteOpenHelper {
     private static final String NBTKSHOP = Ultils.DATABASE_NAME;
     private static final int DATABASE_VERSION = 26;
-
     public DBHelper(Context context) {
         super(context, NBTKSHOP,null,26);
     }
@@ -71,9 +65,6 @@ public class DBHelper extends SQLiteOpenHelper {
                 + Ultils.USER_NAME + " TEXT, "
                 + "FOREIGN KEY(" + Ultils.USER_NAME + ") REFERENCES " + Ultils.TABLE_USER + "(" + Ultils.USER_NAME + ")"
                 + ")";
-
-
-
         String CREATE_ORDER_DETAIL_TABLE = "CREATE TABLE " + Ultils.TABLE_ORDER_DETAIL + "("
                 + Ultils.ORDER_DETAIL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + Ultils.ORDER_ID + " INTEGER, "
@@ -83,17 +74,13 @@ public class DBHelper extends SQLiteOpenHelper {
                 + "FOREIGN KEY(" + Ultils.ORDER_ID + ") REFERENCES " + Ultils.TABLE_ORDER + "(" + Ultils.ORDER_ID + "),"
                 + "FOREIGN KEY(" + Ultils.PRODUCT_ID + ") REFERENCES " + Ultils.TABLE_PRODUCT + "(" + Ultils.PRODUCT_ID + ")"
                 + ")";
-
-
-
         String CREATE_VOUCHER_TABLE = "CREATE TABLE " + Ultils.TABLE_VOUCHER + "("
                 + Ultils.VOUCHER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + Ultils.VOUCHER_CODE + " TEXT, "
                 + Ultils.VOUCHER_PRODUCT_ID + " INTEGER, "
                 + Ultils.VOUCHER_DISCOUNT + " INTEGER, "
                 + Ultils.VOUCHER_START_DATE + " INTEGER, "
-                + Ultils.VOUCHER_END_DATE + " INTEGER"
-                + ");";
+                + Ultils.VOUCHER_END_DATE + " INTEGER"  + ");";
         // Execute table creation statements
         sqLiteDatabase.execSQL(CREATE_USER_TABLE);
         sqLiteDatabase.execSQL(CREATE_ADMIN_TABLE);
@@ -102,8 +89,6 @@ public class DBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(CREATE_ORDER_DETAIL_TABLE);
         sqLiteDatabase.execSQL(CREATE_VOUCHER_TABLE);
         sqLiteDatabase.execSQL(CREATE_ORDER_TABLE);
-
-
         // Execute data insertion statements
         String insertUserData = "INSERT INTO " + Ultils.TABLE_USER + "("
                 + Ultils.USER_NAME + ", "
@@ -158,7 +143,6 @@ public class DBHelper extends SQLiteOpenHelper {
                 cv.put(Ultils.USER_PASS, newUser.getPassword());
                 cv.put(Ultils.USER_EMAIL, newUser.getEmail());
                 cv.put(Ultils.USER_PHONE, newUser.getPhoneNumber());
-
                 long insert = db.insert(Ultils.TABLE_USER, null, cv);
                 db.close();
                 return true;
@@ -174,15 +158,11 @@ public class DBHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("SELECT * FROM " + Ultils.TABLE_USER
                 + " WHERE " + Ultils.USER_PHONE + " = " + sdt_convert
                 + " OR " + Ultils.USER_EMAIL + " = " + mail_convert, null);
-
         if(cursor.moveToFirst()) {
             return true;
         }
         return false;
     }
-
-
-
     // Check login information
     public LoginValidation CheckCustomer(String name, String pass) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -195,14 +175,12 @@ public class DBHelper extends SQLiteOpenHelper {
             int mailIndex = cursor.getColumnIndex(Ultils.USER_EMAIL);
             int phoneIndex = cursor.getColumnIndex(Ultils.USER_PHONE);
             int avatarIndex = cursor.getColumnIndex(Ultils.USER_AVATAR);
-
             int userID = cursor.getInt(idIndex);
             String userName = cursor.getString(nameIndex);
             String userPass = cursor.getString(passIndex);
             String userMail = cursor.getString(mailIndex);
             String userPhone = cursor.getString(phoneIndex);
             int userAvatar = cursor.getInt(avatarIndex);
-
             if(pass.equals(userPass)) {
                 user newUser = new user(userID, userName, userPass, userMail, userPhone, userAvatar);
                 return new LoginValidation(newUser, true);
@@ -212,13 +190,10 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
         return new LoginValidation(false);
     }
-
     public List<Product> getProductsByCategoryId(int categoryId) {
         List<Product> productList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + Ultils.TABLE_PRODUCT + " WHERE " + Ultils.CATEGORY_ID + " = ?", new String[] { String.valueOf(categoryId) });
-
-
         if (cursor.moveToFirst()) {
             do {
                 int productId = cursor.getInt(0);
@@ -231,7 +206,6 @@ public class DBHelper extends SQLiteOpenHelper {
                 productList.add(product);
             } while (cursor.moveToNext());
         }
-
         cursor.close();
         db.close();
 
@@ -240,7 +214,6 @@ public class DBHelper extends SQLiteOpenHelper {
     public Product getProductById(int productId) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + Ultils.TABLE_PRODUCT + " WHERE " + Ultils.PRODUCT_ID + " = " + productId, null);
-
         if (cursor != null) {
             cursor.moveToFirst();
         }
@@ -266,7 +239,6 @@ public class DBHelper extends SQLiteOpenHelper {
                 null,
                 null,
                 null);
-
         Voucher voucher = null;
         if (cursor != null && cursor.moveToFirst()) {
             voucher = new Voucher(
@@ -280,17 +252,13 @@ public class DBHelper extends SQLiteOpenHelper {
             cursor.close();
         }
         db.close();
-
         return voucher;
     }
-
     public List<Product> getHotProducts() {
         List<Product> productList = new ArrayList<>();
         String selectQuery = "SELECT * FROM " + Ultils.TABLE_PRODUCT + " ORDER BY " + Ultils.PRODUCT_PRICE + " DESC LIMIT 4";
-
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
-
         if (cursor.moveToFirst()) {
             do {
                 int proIdIndex = cursor.getColumnIndex(Ultils.PRODUCT_ID);
@@ -299,7 +267,6 @@ public class DBHelper extends SQLiteOpenHelper {
                 int proPriceIndex = cursor.getColumnIndex(Ultils.PRODUCT_PRICE);
                 int proDesIndex = cursor.getColumnIndex(Ultils.PRODUCT_DESCRIPTION);
                 int categoryIdIndex = cursor.getColumnIndex(Ultils.CATEGORY_ID);
-
                 if (proIdIndex != -1 && proImageIndex != -1 && proNameIndex != -1 && proPriceIndex != -1 && proDesIndex != -1 && categoryIdIndex != -1) {
                     Product product = new Product();
                     product.setProID(cursor.getInt(proIdIndex));
@@ -308,13 +275,10 @@ public class DBHelper extends SQLiteOpenHelper {
                     product.setProPrice(cursor.getInt(proPriceIndex));
                     product.setProDes(cursor.getString(proDesIndex));
                     product.setCategoryID(cursor.getInt(categoryIdIndex));
-
-
                     productList.add(product);
                 }
             } while (cursor.moveToNext());
         }
-
         cursor.close();
         db.close();
         return productList;
@@ -322,7 +286,6 @@ public class DBHelper extends SQLiteOpenHelper {
         // Phương thức để thêm đơn hàng mới và chi tiết đơn hàng vào cơ sở dữ liệu
         public long addOrderWithDetails(String username, ArrayList<GioHang> cartItems,String Address) {
             SQLiteDatabase db = this.getWritableDatabase();
-
             // Thêm dữ liệu vào bảng order
             ContentValues orderValues = new ContentValues();
             orderValues.put(Ultils.ORDER_DATE, getCurrentDateTime());
@@ -330,7 +293,6 @@ public class DBHelper extends SQLiteOpenHelper {
             orderValues.put(Ultils.ORDER_ADDRESS,Address );
             orderValues.put(Ultils.ORDER_TOTAL, calculateTotal(cartItems));
             orderValues.put(Ultils.USER_NAME, username);
-
             long orderId = db.insert(Ultils.TABLE_ORDER, null, orderValues);
 
             // Log thông tin đơn hàng sau khi thêm
@@ -343,21 +305,16 @@ public class DBHelper extends SQLiteOpenHelper {
                     detailValues.put(Ultils.PRODUCT_ID, item.getIdsp());
                     detailValues.put(Ultils.QUANTITY, item.getSoluong());
                     detailValues.put(Ultils.PRICE, item.getGiasp());
-
                     long detailId = db.insert(Ultils.TABLE_ORDER_DETAIL, null, detailValues);
-
                     // Log thông tin chi tiết đơn hàng sau khi thêm
                     if (detailId != -1) {
                         logOrderDetailInfo(db, orderId);  // Gọi phương thức logOrderDetailInfo
                     }
                 }
             }
-
             db.close();
             return orderId; // Trả về ID của đơn hàng mới được thêm hoặc -1 nếu có lỗi
         }
-
-
     private String getCurrentDateTime() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
         Date date = new Date();
@@ -380,7 +337,6 @@ public class DBHelper extends SQLiteOpenHelper {
             int totalIndex = cursor.getColumnIndex(Ultils.ORDER_TOTAL);
             int userNameIndex = cursor.getColumnIndex(Ultils.USER_NAME); // Sử dụng USER_NAME thay vì USER_ID
 //            int paymentMethodIndex = cursor.getColumnIndex(Ultils.PAYMENT_METHOD);
-
             // Kiểm tra xem các chỉ số có hợp lệ hay không
             if (idIndex != -1 && dateIndex != -1 && statusIndex != -1 &&
                     totalIndex != -1 && userNameIndex != -1 ) {
@@ -426,52 +382,38 @@ public class DBHelper extends SQLiteOpenHelper {
         ArrayList<Product> productList = new ArrayList<>();
         // Get readable database
         SQLiteDatabase db = this.getReadableDatabase();
-
         // SQL query to perform the search
         String searchQuery = "SELECT * FROM " + Ultils.TABLE_PRODUCT + " WHERE " + Ultils.PRODUCT_NAME + " LIKE ?";
         Cursor cursor = db.rawQuery(searchQuery, new String[]{"%" + query + "%"});
-
         // Log the query
         Log.d("Search Query", "Query: " + searchQuery);
-
         // Iterate over the cursor to create Product objects and add them to the list
         if (cursor.moveToFirst()) {
             do {
                 int idColumnIndex = cursor.getColumnIndex(Ultils.PRODUCT_ID);
                 int id = cursor.getInt(idColumnIndex);
-
                 int imageColumnIndex = cursor.getColumnIndex(Ultils.PRODUCT_IMAGE);
                 String image = cursor.getString(imageColumnIndex);
-
                 int nameColumnIndex = cursor.getColumnIndex(Ultils.PRODUCT_NAME);
                 String name = cursor.getString(nameColumnIndex);
-
                 int priceColumnIndex = cursor.getColumnIndex(Ultils.PRODUCT_PRICE);
                 int price = cursor.getInt(priceColumnIndex);
-
                 int descriptionColumnIndex = cursor.getColumnIndex(Ultils.PRODUCT_DESCRIPTION);
                 String description = cursor.getString(descriptionColumnIndex);
-
                 int categoryIdColumnIndex = cursor.getColumnIndex(Ultils.CATEGORY_ID);
                 int categoryId = cursor.getInt(categoryIdColumnIndex);
-
                 // Log the retrieved data
                 Log.d("Search Result", "ID: " + id + ", Image: " + image + ", Name: " + name + ", Price: " + price + ", Description: " + description + ", Category ID: " + categoryId);
-
                 // Assuming you have a Product constructor like this
                 Product product = new Product(id, image, name, price, description, categoryId);
                 productList.add(product);
             } while (cursor.moveToNext());
         }
-
         // Close the cursor and database
         cursor.close();
         db.close();
-
         return productList;
     }
-
-
     // Phương thức để lấy danh sách đơn hàng dựa trên tên người dùng
     public List<Order> getOrdersByUsername(String username) {
         List<Order> orders = new ArrayList<>();
@@ -482,7 +424,6 @@ public class DBHelper extends SQLiteOpenHelper {
                 Ultils.USER_NAME + "=?",
                 new String[]{username},
                 null, null, null, null);
-
         if (cursor.moveToFirst()) {
             int orderIdIndex = cursor.getColumnIndex(Ultils.ORDER_ID);
             int orderDateIndex = cursor.getColumnIndex(Ultils.ORDER_DATE);
@@ -496,7 +437,6 @@ public class DBHelper extends SQLiteOpenHelper {
                             cursor.getString(orderDateIndex),
                             cursor.getString(orderAddress),
                             cursor.getDouble(orderTotalIndex)
-
                     );
                     orders.add(order);
                 } while (cursor.moveToNext());
