@@ -1,5 +1,4 @@
 package com.example.doan_sale.model;
-
 import java.io.Serializable;
 
 public class user implements Serializable {
