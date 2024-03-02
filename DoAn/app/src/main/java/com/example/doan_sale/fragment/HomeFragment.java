@@ -1,16 +1,13 @@
 package com.example.doan_sale.fragment;
-
 import android.annotation.SuppressLint;
 import android.app.appsearch.SearchResults;
 import android.content.Intent;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
-
 import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -23,7 +20,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.example.doan_sale.BannerAdapter;
 import com.example.doan_sale.Product.ChiTietSanPhamActivity;
 import com.example.doan_sale.Product.ProDataQuery;
@@ -34,7 +30,6 @@ import com.example.doan_sale.model.Product;
 import com.example.doan_sale.ui.DBHelper;
 import com.example.doan_sale.ui.MainActivity;
 import com.example.doan_sale.ui.MainAdapter;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,7 +43,6 @@ public class HomeFragment extends Fragment implements MainAdapter.MainCallBack {
     private EditText searchEditText;
     private Button searchButton;
     MainAdapter mainAdapter;
-
     ImageView ivthich;
     private ViewPager bannerViewPager;
     private BannerAdapter bannerAdapter;
@@ -61,9 +55,7 @@ public class HomeFragment extends Fragment implements MainAdapter.MainCallBack {
     public static ArrayList<GioHang> manggiohang;
     ArrayList<Product> originalList = new ArrayList<>();
     private RecyclerView rcvHotProducts;
-
     private ArrayList<Product> hotProductList;
-
     @Override
     public void onItemClick(int id) {
     }
@@ -94,8 +86,6 @@ public class HomeFragment extends Fragment implements MainAdapter.MainCallBack {
                 onClickrecyclerview(product);
             }
         });
-
-
         //gan Adapter
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2);
         rvListCode.setAdapter(mainAdapter);
@@ -111,11 +101,8 @@ public class HomeFragment extends Fragment implements MainAdapter.MainCallBack {
         });
         rcvHotProducts.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         rcvHotProducts.setAdapter(mainAdapter);
-
         // Load dữ liệu sản phẩm đang hot
         loadHotProducts();
-
-
         if(manggiohang!=null){
 
         }else{
