@@ -1,12 +1,9 @@
 package com.example.doan_sale.fragment;
-
 import android.content.Intent;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +13,6 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
-
 import com.example.doan_sale.Product.CateAdapter;
 import com.example.doan_sale.Product.ChiTietSanPhamActivity;
 import com.example.doan_sale.Product.ProDataQuery;
@@ -26,29 +22,22 @@ import com.example.doan_sale.model.Product;
 import com.example.doan_sale.ui.DBHelper;
 import com.example.doan_sale.ui.MainAdapter;
 import com.google.android.material.tabs.TabLayout;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 
 public class DSSPFragment extends Fragment implements CateAdapter.CateCallBack {
-
     private ArrayAdapter<String> categoryAdapter;
     private List<String> categoryNames;
-
     private RecyclerView phoneList;
-
     private List<Product> phoneProducts;
     private List<Product> headphoneProducts;
     private List<Product> chargerProducts;
-
     private CateAdapter phoneAdapter;
     private CateAdapter headphoneAdapter;
     private CateAdapter chargerAdapter;
-
     private DBHelper dbHelper;
-
     //code moi
     private TabLayout tabLayoutOrderStatus;
     private TextView tvStatusMessage;
@@ -59,20 +48,15 @@ public class DSSPFragment extends Fragment implements CateAdapter.CateCallBack {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_d_s_s_p, container, false);
         // Initialize the Spinner
-
-
         tabLayoutOrderStatus = view.findViewById(R.id.tabCategory_11);
         tabLayoutOrderStatus.addTab(tabLayoutOrderStatus.newTab().setText("Điện thoại"));
         tabLayoutOrderStatus.addTab(tabLayoutOrderStatus.newTab().setText( "Tai nghe"));
         tabLayoutOrderStatus.addTab(tabLayoutOrderStatus.newTab().setText("Sạc điện thoại"));
-
         TabLayout.Tab defaultTab = tabLayoutOrderStatus.getTabAt(0);
         if (defaultTab != null) {
             defaultTab.select();
 
         }
-
-
         tabLayoutOrderStatus.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -112,44 +96,31 @@ public class DSSPFragment extends Fragment implements CateAdapter.CateCallBack {
         categoryNames = Arrays.asList("Điện thoại", "Tai nghe", "Sạc điện thoại");
         categoryAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, categoryNames);
         categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-
         // Set a listener for category selection
-
         phoneList = view.findViewById(R.id.phone_list);
         tvStatusMessage = view.findViewById(R.id.tvStatusMessage);
         progressBar = view.findViewById(R.id.progressBar);
-
-
         // lay database
         dbHelper = new DBHelper(getActivity());
         phoneProducts = dbHelper.getProductsByCategoryId(1);
         headphoneProducts = dbHelper.getProductsByCategoryId(2);
         chargerProducts = dbHelper.getProductsByCategoryId(3);
-
-
         phoneAdapter = new CateAdapter(new ArrayList<>(phoneProducts));
         headphoneAdapter = new CateAdapter(new ArrayList<>(headphoneProducts));
         chargerAdapter = new CateAdapter(new ArrayList<>(chargerProducts));
-
         phoneList.setLayoutManager(new LinearLayoutManager(getActivity()));
         phoneAdapter = new CateAdapter(new ArrayList<>(phoneProducts));
         phoneAdapter.setCateCallBack(this);
         currentAdapter = phoneAdapter; // Đặt adapter mặc định là phoneAdapter
         phoneList.setAdapter(currentAdapter);
-
-
         return view;
     }
-
     // code moi
-
-
     private void loadPhoneProducts() {
         phoneProducts = dbHelper.getProductsByCategoryId(1);
         phoneAdapter.updateData(new ArrayList<>(phoneProducts));
-//        currentAdapter.notifyDataSetChanged(); // Thông báo dữ liệu đã thay đổi
-//        toggleRecyclerViewVisibility(true); // Hiển thị RecyclerView
+        //        currentAdapter.notifyDataSetChanged(); // Thông báo dữ liệu đã thay đổi
+        //        toggleRecyclerViewVisibility(true); // Hiển thị RecyclerView
         switchAdapter(phoneAdapter);
     }
 
