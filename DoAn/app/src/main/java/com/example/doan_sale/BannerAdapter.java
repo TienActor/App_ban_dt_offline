@@ -1,25 +1,20 @@
 package com.example.doan_sale;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
-
 import java.util.List;
 
 public class BannerAdapter extends PagerAdapter {
     private Context context;
     List<Integer> listPhoto;
-
     public BannerAdapter(Context context, List<Integer> listPhoto) {
         this.context = context;
         this.listPhoto = listPhoto;
     }
-
     @Override
     public int getCount() {
 
@@ -28,7 +23,6 @@ public class BannerAdapter extends PagerAdapter {
         }
         return 0;
     }
-
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
