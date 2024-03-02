@@ -1,5 +1,4 @@
 package com.example.doan_sale.model;
-
 import java.io.Serializable;
 
 public class Product implements Serializable {
@@ -9,7 +8,6 @@ public class Product implements Serializable {
     String proImage;
     String proDes;
     int categoryID;
-
     public String getProDes() {
         return proDes;
     }
