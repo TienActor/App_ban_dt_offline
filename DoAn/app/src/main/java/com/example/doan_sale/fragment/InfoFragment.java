@@ -1,16 +1,13 @@
     package com.example.doan_sale.fragment;
-
     import android.content.Context;
     import android.content.DialogInterface;
     import android.content.SharedPreferences;
     import android.content.res.Resources;
     import android.os.Bundle;
-
     import androidx.appcompat.app.AlertDialog;
     import androidx.fragment.app.Fragment;
     import androidx.recyclerview.widget.LinearLayoutManager;
     import androidx.recyclerview.widget.RecyclerView;
-
     import android.support.annotation.NonNull;
     import android.util.Log;
     import android.view.LayoutInflater;
@@ -23,7 +20,6 @@
     import android.widget.ImageView;
     import android.widget.TextView;
     import android.widget.Toast;
-
     import com.example.doan_sale.Admin.Admin_User_Activity;
     import com.example.doan_sale.Admin.AvatarAdapter;
     import com.example.doan_sale.Admin.UserDataQuery;
@@ -33,14 +29,12 @@
     import com.example.doan_sale.model.user;
     import com.example.doan_sale.ui.DBHelper;
     import com.example.doan_sale.ui.MainAdapter;
-
     import java.util.ArrayList;
 
 
     public class InfoFragment extends Fragment implements UserAccountAdapter.UserAccountCallBack {
         ArrayList<user> lstuser;
         private boolean hasSelectedAvatar = false;
-
         RecyclerView rvListCode;
         public static int selectedAvatar;
         TextView tvAvatar;
@@ -50,31 +44,25 @@
         private SharedPreferences sharedPreferences;
         private UserAccountAdapter adapter;
         private String username;
-
         @Override
         public void onAttach(@NonNull Context context) {
             super.onAttach(context);
             sharedPreferences = context.getSharedPreferences("USER_INFO", Context.MODE_PRIVATE);
             username = sharedPreferences.getString("username", null);
             user currentUser = UserDataQuery.getUserByUsername(context, username);
-
-
             lstuser = new ArrayList<>();
             if (currentUser != null) {
                 lstuser.add(currentUser);
             }
-
             adapter = new UserAccountAdapter(lstuser);
             adapter.setUser(currentUser);
         }
-
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             // Inflate the layout for this fragment
             View view = inflater.inflate(R.layout.fragment_info, container, false);
             rvListCode = view.findViewById(R.id.rvListUser1);
-
             adapter.setUserAccountCallBack(this);
             rvListCode.setAdapter(adapter);
             // set layout manager for the RecyclerView
@@ -86,11 +74,9 @@
             // Khoi tao dialog de cap nhat nguoi dung
             androidx.appcompat.app.AlertDialog.Builder alertDialog = new androidx.appcompat.app.AlertDialog.Builder(getContext());
             alertDialog.setTitle("Cập nhật");
-
             LayoutInflater inflater = LayoutInflater.from(getContext());
             View dialogView = inflater.inflate(R.layout.user_dialog, null);
             alertDialog.setView(dialogView);
-
             EditText edName = (EditText) dialogView.findViewById(R.id.ed_User_Name);
             EditText edPass = (EditText) dialogView.findViewById(R.id.ed_User_Pass);
             EditText edEmail = (EditText) dialogView.findViewById(R.id.ed_User_Email);
@@ -102,7 +88,6 @@
             edEmail.setText(us.getEmail());
             edPhone.setText(us.getPhoneNumber());
             tAvatar.setImageResource(us.getAvatar());
-
             // Gan du lieu
             alertDialog.setPositiveButton("Chỉnh sửa", (dialog, which) -> {
                 us.setUserName(edName.getText().toString());
@@ -113,7 +98,6 @@
                 if (!hasSelectedAvatar) {
                     hinhanh();
                 }
-
                 if (us.getUserName().isEmpty()) {
                     Toast.makeText(getContext(), "Nhập dữ liệu không hợp lệ", Toast.LENGTH_LONG).show();
                 } else {
@@ -130,7 +114,6 @@
             });
             alertDialog.create();
             alertDialog.show();
-
             // Gan su kien click cho button chon hinh anh
             btAvatar = dialogView.findViewById(R.id.btAvatar1);
             btAvatar.setOnClickListener(new View.OnClickListener() {
@@ -144,25 +127,18 @@
 
         void hinhanh() {
             androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(getContext());
-
             LayoutInflater inflater = LayoutInflater.from(getActivity());
-
             View dialogView = inflater.inflate(R.layout.avatar_dialog, null);
             builder.setView(dialogView);
-
             ivSelectedAvatar = dialogView.findViewById(R.id.ivSelectedAvatar);
             tvAvatar = dialogView.findViewById(R.id.tvAvatar);
             gridView = dialogView.findViewById(R.id.gridview);
-
             AvatarAdapter adapter = new AvatarAdapter(getContext(), new int[]{R.drawable.meo1, R.drawable.meo2, R.drawable.meo3});
             gridView.setAdapter(adapter);
-
             Button btnChoose = dialogView.findViewById(R.id.btnChoose);
             final AlertDialog dialog = builder.create();
-
             // Khởi tạo giá trị selectedAvatar
             selectedAvatar = -1;
-
             gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -196,18 +172,13 @@
 
             dialog.show();
         }
-
-
         void resetData(){
             lstuser.clear();
             lstuser.add(UserDataQuery.getUserByUsername(getContext(),username));
             adapter.notifyDataSetChanged();
         }
         @Override
-        public void onItemClick(int id) {
-
-        }
-
+        public void onItemClick(int id) {}
         @Override
         public void onitemEditClicked(user us, int position) {
             updateUserDialog(us);
