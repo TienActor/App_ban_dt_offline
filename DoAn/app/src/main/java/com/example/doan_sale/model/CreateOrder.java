@@ -1,13 +1,9 @@
 package com.example.doan_sale.model;
-
 import com.example.doan_sale.Zalo.HttpProvider;
 import com.example.doan_sale.model.AppInfo;
 import com.example.doan_sale.Zalo.Helper.Helpers;
-
 import org.json.JSONObject;
-
 import java.util.Date;
-
 import okhttp3.FormBody;
 import okhttp3.RequestBody;
 
@@ -23,7 +19,6 @@ public class CreateOrder {
         String BankCode;
         String Description;
         String Mac;
-
         private CreateOrderData(String amount) throws Exception {
             long appTime = new Date().getTime();
             AppId = String.valueOf(AppInfo.APP_ID);
@@ -47,7 +42,6 @@ public class CreateOrder {
             Mac = Helpers.getMac(AppInfo.MAC_KEY, inputHMac);
         }
     }
-
      public JSONObject createOrder(String amount) throws Exception {
         CreateOrderData input = new CreateOrderData(amount);
 
@@ -63,7 +57,6 @@ public class CreateOrder {
                 .add("description", input.Description)
                 .add("mac", input.Mac)
                 .build();
-
         JSONObject data = HttpProvider.sendPost(AppInfo.URL_CREATE_ORDER, formBody);
         return data;
     }
