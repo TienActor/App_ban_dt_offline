@@ -1,18 +1,13 @@
 package com.example.doan_sale.model;
-
 import java.io.Serializable;
 
 public class GioHang implements Serializable {
     public int idsp;
-
     public String tensp;
     public long Giasp;
     public String Hinhsp;
     public int Soluong;
-
     private boolean isDiscountApplied;
-
-
     public GioHang(int idsp, String tensp, long giasp, String hinhsp, int soluong) {
         this.idsp = idsp;
         this.tensp = tensp;
@@ -41,7 +36,6 @@ public class GioHang implements Serializable {
     public void setTensp(String tensp) {
         this.tensp = tensp;
     }
-
     public long getGiasp() {
         return Giasp;
     }
