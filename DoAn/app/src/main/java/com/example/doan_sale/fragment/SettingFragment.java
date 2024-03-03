@@ -1,13 +1,10 @@
 package com.example.doan_sale.fragment;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +13,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.doan_sale.Product.ChiTietSanPhamActivity;
 import com.example.doan_sale.Product.Yeuthichadapter;
 import com.example.doan_sale.R;
@@ -25,24 +21,18 @@ import com.example.doan_sale.model.GioHang;
 import com.example.doan_sale.model.Product;
 import com.example.doan_sale.ui.DBHelper;
 import com.example.doan_sale.ui.MainActivity;
-
 import java.text.DecimalFormat;
 
-
 public class SettingFragment extends Fragment {
-
     TextView txtThongbao;
-
     static TextView txtTongtien;
     ListView listViewgiohang;
     Button btnthemgiohang, btntieptucmua;
     Yeuthichadapter giohangAdapter;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
