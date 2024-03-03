@@ -1,10 +1,6 @@
 package com.example.doan_sale.Zalo.Helper;
-
 import android.annotation.SuppressLint;
-
-
 import com.example.doan_sale.Zalo.Helper.HMac.HMacUtil;
-
 import org.jetbrains.annotations.NotNull;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -14,7 +10,6 @@ import java.util.Objects;
 
 public class Helpers {
     private static int transIdDefault = 1;
-
     @NotNull
     @SuppressLint("DefaultLocale")
      public static String getAppTransId() {
