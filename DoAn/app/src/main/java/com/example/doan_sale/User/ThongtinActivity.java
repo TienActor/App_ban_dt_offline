@@ -1,11 +1,8 @@
 package com.example.doan_sale.User;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
-
 import com.example.doan_sale.R;
 
 public class ThongtinActivity extends AppCompatActivity {
