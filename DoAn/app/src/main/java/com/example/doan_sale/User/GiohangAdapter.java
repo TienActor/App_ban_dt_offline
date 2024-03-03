@@ -1,5 +1,4 @@
 package com.example.doan_sale.User;
-
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -9,14 +8,12 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.example.doan_sale.R;
 import com.example.doan_sale.model.GioHang;
 import com.example.doan_sale.model.Product;
 import com.example.doan_sale.ui.MainActivity;
 import com.example.doan_sale.ui.Ultils;
 import com.squareup.picasso.Picasso;
-
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
@@ -28,7 +25,6 @@ public class GiohangAdapter extends BaseAdapter {
         this.context = context;
         this.arrayListgiohang = arrayListgiohang;
     }
-
     @Override
     public int getCount() {
         return arrayListgiohang.size();
@@ -46,7 +42,6 @@ public class GiohangAdapter extends BaseAdapter {
         public ImageView imggiohang;
         public Button btngiam,btngiatri,btntang;
     }
-
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         if (view==null){
