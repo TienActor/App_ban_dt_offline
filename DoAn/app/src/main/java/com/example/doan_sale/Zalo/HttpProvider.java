@@ -1,14 +1,10 @@
 package com.example.doan_sale.Zalo;
-
 import android.util.Log;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.IOException;
 import java.util.Collections;
 import java.util.concurrent.TimeUnit;
-
 import okhttp3.CipherSuite;
 import okhttp3.ConnectionSpec;
 import okhttp3.OkHttpClient;
@@ -28,18 +24,15 @@ public class HttpProvider {
                             CipherSuite.TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
                             CipherSuite.TLS_DHE_RSA_WITH_AES_128_GCM_SHA256)
                     .build();
-
             OkHttpClient client = new OkHttpClient.Builder()
                     .connectionSpecs(Collections.singletonList(spec))
                     .callTimeout(5000, TimeUnit.MILLISECONDS)
                     .build();
-
             Request request = new Request.Builder()
                     .url(URL)
                     .addHeader("Content-Type", "application/x-www-form-urlencoded")
                     .post(formBody)
                     .build();
-
             Response response = client.newCall(request).execute();
 
             if (!response.isSuccessful()) {
@@ -52,7 +45,6 @@ public class HttpProvider {
         }  catch (IOException | JSONException e) {
             e.printStackTrace();
         }
-
         return data;
     }
 }
