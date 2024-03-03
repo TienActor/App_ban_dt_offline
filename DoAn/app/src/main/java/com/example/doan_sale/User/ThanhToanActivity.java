@@ -1,9 +1,7 @@
 package com.example.doan_sale.User;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -18,7 +16,6 @@ import android.widget.ImageButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.doan_sale.Product.ProductAdapter;
 import com.example.doan_sale.R;
 import com.example.doan_sale.ThankYouActivity;
@@ -28,13 +25,10 @@ import com.example.doan_sale.model.Product;
 import com.example.doan_sale.model.Voucher;
 import com.example.doan_sale.ui.DBHelper;
 import com.example.doan_sale.ui.MainActivity;
-
 import org.json.JSONObject;
-
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import vn.zalopay.sdk.Environment;
 import vn.zalopay.sdk.ZaloPayError;
 import vn.zalopay.sdk.ZaloPaySDK;
@@ -67,9 +61,6 @@ public class ThanhToanActivity extends AppCompatActivity implements ThanhToanAda
         StrictMode.setThreadPolicy(policy);
         // ZaloPay SDK Init
         ZaloPaySDK.init(2553, Environment.SANDBOX);
-
-
-
          back.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
@@ -143,19 +134,14 @@ public class ThanhToanActivity extends AppCompatActivity implements ThanhToanAda
         rvListCode.setLayoutManager(new LinearLayoutManager(this));
         productAdapter.setProCallBack(this);
         rvListCode.setAdapter(productAdapter);
-
     }
-
-
     public void Zalorequest()
     {
         CreateOrder orderApi = new CreateOrder();
         EventUtil(); // Tính toán lại tổng tiền trước khi tạo order
-
         // Chuyển đổi giá trị từ TextView tongtienTT sang số để sử dụng
         String tongtienText = tongtienTT.getText().toString().replaceAll("[^\\d]", ""); // loại bỏ tất cả ký tự không phải số
         long tongtien = Long.parseLong(tongtienText); // chuyển đổi String sang long
-
         try {
             JSONObject data = orderApi.createOrder(String.valueOf(tongtien));
             Log.d("Amount", "Ban da du tien de thanh toan ");
@@ -163,13 +149,9 @@ public class ThanhToanActivity extends AppCompatActivity implements ThanhToanAda
             String code = data.getString("return_code");
             Log.d("thong boa code", code);
 //            Toast.makeText(getApplicationContext(), "return_code: " + code, Toast.LENGTH_LONG).show();
-
             if (code.equals("1")) {
                String token = data.getString("zp_trans_token");
                 Log.d("thong boa code", token);
-
-
-
                ZaloPaySDK.getInstance().payOrder(ThanhToanActivity.this, token, "demozpdk://app", new PayOrderListener() {
                    @Override
                    public void onPaymentSucceeded(String s, String s1, String s2) {
@@ -181,12 +163,10 @@ public class ThanhToanActivity extends AppCompatActivity implements ThanhToanAda
                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                            @Override
                                            public void onClick(DialogInterface dialog, int which) {
-
                                            }
                                        })
                                        .setNegativeButton("Cancel", null).show();
                            }
-
                        });
                        Intent it = new Intent(ThanhToanActivity.this,ThankYouActivity.class);
                        startActivity(it);
@@ -204,7 +184,6 @@ public class ThanhToanActivity extends AppCompatActivity implements ThanhToanAda
                                })
                                .setNegativeButton("Cancel", null).show();
                    }
-
                    @Override
                    public void onPaymentError(ZaloPayError zaloPayError, String s, String s1) {
                        new AlertDialog.Builder(ThanhToanActivity.this)
@@ -222,19 +201,15 @@ public class ThanhToanActivity extends AppCompatActivity implements ThanhToanAda
               //  txtToken.setText(data.getString("zp_trans_token"));
 //                IsDone();
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         ZaloPaySDK.getInstance().onResult(intent);
     }
-
-
     public static void EventUtil()  {
         long tongtien=0;
         for (int i = 0; i< MainActivity.manggiohang.size(); i++){
