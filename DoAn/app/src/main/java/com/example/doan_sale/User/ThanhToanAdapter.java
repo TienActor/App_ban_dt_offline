@@ -1,21 +1,17 @@
 package com.example.doan_sale.User;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.doan_sale.Product.ProductAdapter;
 import com.example.doan_sale.R;
 import com.example.doan_sale.model.GioHang;
 import com.example.doan_sale.model.Product;
 import com.example.doan_sale.ui.Ultils;
-
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
@@ -27,11 +23,9 @@ public class ThanhToanAdapter extends RecyclerView.Adapter<ThanhToanAdapter.Than
         this.lstgio = lstgio;
         notifyDataSetChanged();
     }
-
     public void setProCallBack(ThanhToanCallBack proCallBack) {
         this.proCallBack = proCallBack;
     }
-
     public ThanhToanAdapter(ArrayList<GioHang> lstgio) {
         this.lstgio = lstgio;
     }
@@ -40,7 +34,6 @@ public class ThanhToanAdapter extends RecyclerView.Adapter<ThanhToanAdapter.Than
         this.lstgio= lstPro;
         this.proCallBack = callBack;
     }
-
     @NonNull
     @Override
     public ThanhToanViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -62,7 +55,6 @@ public class ThanhToanAdapter extends RecyclerView.Adapter<ThanhToanAdapter.Than
         holder.proPrice.setText("Giá: "+decimalFormat.format(item.getGiasp())+" Đ");
         holder.proQuantity.setText("Số lượng: "+item.getSoluong());
         //Lay su kien
-
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
@@ -82,7 +74,6 @@ public class ThanhToanAdapter extends RecyclerView.Adapter<ThanhToanAdapter.Than
     public int getItemCount() {
         return lstgio.size();
     }
-
     public class ThanhToanViewHolder extends RecyclerView.ViewHolder{
         ImageView imPro;
         TextView proName;
