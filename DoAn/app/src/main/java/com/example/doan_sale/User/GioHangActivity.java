@@ -1,9 +1,7 @@
 package com.example.doan_sale.User;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,7 +13,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.doan_sale.Account.LoginActivity;
 import com.example.doan_sale.R;
 import com.example.doan_sale.ThankYouActivity;
@@ -23,7 +20,6 @@ import com.example.doan_sale.model.GioHang;
 import com.example.doan_sale.model.Voucher;
 import com.example.doan_sale.ui.DBHelper;
 import com.example.doan_sale.ui.MainActivity;
-
 import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.HashMap;
@@ -116,7 +112,6 @@ public class GioHangActivity extends AppCompatActivity implements Serializable {
             }
         });
     }
-
     public static void EventUtil()  {
         long tongtien=0;
         for (int i=0;i<MainActivity.manggiohang.size();i++){
