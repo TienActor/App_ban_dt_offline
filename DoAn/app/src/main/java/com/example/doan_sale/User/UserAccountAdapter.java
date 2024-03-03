@@ -1,5 +1,4 @@
 package com.example.doan_sale.User;
-
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -7,13 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.doan_sale.R;
 import com.example.doan_sale.model.user;
-
 import java.util.ArrayList;
 
 public class UserAccountAdapter extends RecyclerView.Adapter<UserAccountAdapter.UserAccountViewHolder> {
@@ -21,8 +17,6 @@ public class UserAccountAdapter extends RecyclerView.Adapter<UserAccountAdapter.
     private Context context;
     private UserAccountCallBack userCallBack;
     private user currentUser; // Thêm thuộc tính currentUser
-
-
     public void setUser(user currentUser) {
         this.currentUser = currentUser;
         notifyDataSetChanged(); // Cập nhật lại giao diện sau khi thay đổi dữ liệu
@@ -33,7 +27,6 @@ public class UserAccountAdapter extends RecyclerView.Adapter<UserAccountAdapter.
         this.lstuser = lstuser;
         this.currentUser = null;
     }
-
     public UserAccountAdapter(ArrayList<user> lstuser, user currentUser) {
         this.lstuser = lstuser;
         this.currentUser = currentUser;
@@ -41,9 +34,6 @@ public class UserAccountAdapter extends RecyclerView.Adapter<UserAccountAdapter.
     public UserAccountAdapter() {
         this.lstuser = new ArrayList<>();
     }
-
-
-
     public void setUserAccountCallBack(UserAccountCallBack userCallBack) {
         this.userCallBack = userCallBack;
     }
@@ -58,7 +48,6 @@ public class UserAccountAdapter extends RecyclerView.Adapter<UserAccountAdapter.
         UserAccountViewHolder userViewHolder = new UserAccountViewHolder(proView);
         return userViewHolder;
     }
-
     @Override
     public void onBindViewHolder(@NonNull UserAccountViewHolder holder, int position) {
         user item = lstuser.get(position);
@@ -87,16 +76,11 @@ public class UserAccountAdapter extends RecyclerView.Adapter<UserAccountAdapter.
                 }
             }
         });
-
-
-
     }
-
     @Override
     public int getItemCount() {
         return lstuser.size();
     }
-
     public class UserAccountViewHolder extends RecyclerView.ViewHolder{
         ImageView avatarUser;
         TextView userName;
