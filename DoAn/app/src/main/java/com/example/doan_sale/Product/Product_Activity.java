@@ -1,8 +1,6 @@
 package com.example.doan_sale.Product;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,12 +12,10 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.doan_sale.Admin.AdminActivity;
 import com.example.doan_sale.R;
 import com.example.doan_sale.model.Product;
 import com.example.doan_sale.ui.DBHelper;
-
 import java.util.ArrayList;
 
 public class Product_Activity extends AppCompatActivity {
