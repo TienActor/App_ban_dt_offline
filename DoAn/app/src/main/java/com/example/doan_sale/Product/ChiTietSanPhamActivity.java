@@ -1,9 +1,7 @@
 package com.example.doan_sale.Product;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,7 +12,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-
 import com.example.doan_sale.R;
 import com.example.doan_sale.User.GioHangActivity;
 import com.example.doan_sale.model.GioHang;
@@ -22,8 +19,6 @@ import com.example.doan_sale.model.Product;
 import com.example.doan_sale.ui.MainActivity;
 import com.example.doan_sale.ui.MainAdapter;
 import com.example.doan_sale.ui.Ultils;
-
-
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
@@ -41,7 +36,6 @@ public class ChiTietSanPhamActivity extends AppCompatActivity implements MainAda
     String Motachitiet="";
     int Idsanpham=0;
     ArrayList<Product> lstPro;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
