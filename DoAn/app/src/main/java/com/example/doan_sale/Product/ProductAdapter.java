@@ -1,19 +1,15 @@
 package com.example.doan_sale.Product;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.doan_sale.R;
 import com.example.doan_sale.model.Product;
 import com.example.doan_sale.ui.Ultils;
-
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -74,8 +70,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         TextView IDcate;
         ImageView ivEdit;
         ImageView ivDelete;
-
-
         public ProductViewHolder(@NonNull View itemView) {
             super(itemView);
             imPro = itemView.findViewById(R.id.ivAvatar);
