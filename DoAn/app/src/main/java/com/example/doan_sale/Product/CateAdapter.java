@@ -1,20 +1,16 @@
 package com.example.doan_sale.Product;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.doan_sale.R;
 import com.example.doan_sale.model.Product;
 import com.example.doan_sale.ui.MainAdapter;
 import com.example.doan_sale.ui.Ultils;
-
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,12 +19,9 @@ public class CateAdapter  extends RecyclerView.Adapter<CateAdapter.CateViewHolde
     ArrayList<Product> lstPro;
     Context context;
     CateCallBack cateCallBack;
-
-
     public void setCateCallBack(CateCallBack cateCallBack) {
         this.cateCallBack = cateCallBack;
     }
-
     public  CateAdapter(Context context, ArrayList<Product> lstPro) {
         this.context = context;
         this.lstPro = lstPro;
@@ -63,7 +56,6 @@ public class CateAdapter  extends RecyclerView.Adapter<CateAdapter.CateViewHolde
         holder.proName.setText(item.getProName());
         DecimalFormat decimalFormat=new DecimalFormat("###,###,###");
         holder.proPrice.setText("Giá: "+decimalFormat.format(item.getProPrice())+" Đ");
-
         //Lay su kien
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
