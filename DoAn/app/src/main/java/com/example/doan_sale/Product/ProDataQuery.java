@@ -1,14 +1,11 @@
 package com.example.doan_sale.Product;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-
 import com.example.doan_sale.model.Product;
 import com.example.doan_sale.ui.DBHelper;
 import com.example.doan_sale.ui.Ultils;
-
 import java.util.ArrayList;
 
 public class ProDataQuery {
