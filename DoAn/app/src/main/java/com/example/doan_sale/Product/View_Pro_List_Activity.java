@@ -1,11 +1,9 @@
 package com.example.doan_sale.Product;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,12 +15,10 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 import com.example.doan_sale.Admin.AdminActivity;
 import com.example.doan_sale.R;
 import com.example.doan_sale.model.Product;
 import com.example.doan_sale.ui.DBHelper;
-
 import java.util.ArrayList;
 
 public class View_Pro_List_Activity extends AppCompatActivity implements ProductAdapter.ProCallBack{
@@ -31,7 +27,6 @@ public class View_Pro_List_Activity extends AppCompatActivity implements Product
     ArrayList<Product> lstPro;
     ProductAdapter productAdapter;
     ImageButton back;
-
     DBHelper dbHelper = new DBHelper(View_Pro_List_Activity.this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,14 +60,11 @@ public class View_Pro_List_Activity extends AppCompatActivity implements Product
         View dialogView = inflater.inflate(R.layout.product_diaglog,null);
         alertDialog.setView(dialogView);
         // Đặt giá trị cho các EditText dựa trên dữ liệu của sản phẩm
-
-
         EditText edImage = (EditText) dialogView.findViewById(R.id.edImage);
         EditText edName = (EditText) dialogView.findViewById(R.id.edproName);
         EditText edPrice = (EditText) dialogView.findViewById(R.id.edproPrice);
         EditText edDes = (EditText) dialogView.findViewById(R.id.edproDes);
         EditText edCate=(EditText) dialogView.findViewById(R.id.edcateID);
-
         edImage.setText(product.getProImage());
         edName.setText(product.getProName());
         edPrice.setText(String.valueOf(product.getProPrice()));
