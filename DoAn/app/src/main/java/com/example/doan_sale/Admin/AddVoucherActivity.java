@@ -1,5 +1,4 @@
 package com.example.doan_sale.Admin;
-
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -9,13 +8,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.doan_sale.R;
 import com.example.doan_sale.ui.DBHelper;
 import com.example.doan_sale.ui.Ultils;
-
 public class AddVoucherActivity extends AppCompatActivity {
     private EditText editTextVoucherCode, editTextVoucherDiscount, editTextVoucherProductId,
             editTextVoucherStartDate, editTextVoucherEndDate;
@@ -27,9 +23,7 @@ public class AddVoucherActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_voucher);
-
         dbHelper = new DBHelper(this);
-
         editTextVoucherCode = findViewById(R.id.edit_text_voucher_code);
         editTextVoucherDiscount = findViewById(R.id.edit_text_voucher_discount);
         editTextVoucherProductId = findViewById(R.id.edit_text_voucher_product_id);
