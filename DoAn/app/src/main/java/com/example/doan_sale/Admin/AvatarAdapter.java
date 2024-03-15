@@ -1,17 +1,13 @@
 package com.example.doan_sale.Admin;
-
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
-
 public class AvatarAdapter extends BaseAdapter {
-
         private Context mContext;
         private int[] mAvatarIds;
-
         public AvatarAdapter(Context context, int[] avatarIds) {
             mContext = context;
             mAvatarIds = avatarIds;
