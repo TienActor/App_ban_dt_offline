@@ -1,10 +1,8 @@
 package com.example.doan_sale.Admin;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.content.res.Resources;
 import android.widget.GridView;
@@ -19,12 +17,10 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.doan_sale.Account.RegisterActivity;
 import com.example.doan_sale.Product.ProDataQuery;
 import com.example.doan_sale.R;
 import com.example.doan_sale.model.user;
-
 import java.util.ArrayList;
 
 public class Admin_User_Activity extends AppCompatActivity implements UserAdapter.UserCallBack{
@@ -36,7 +32,7 @@ public class Admin_User_Activity extends AppCompatActivity implements UserAdapte
     GridView gridView;
     ImageView ivAvatar, ivSelectedAvatar;
     Button btAvatar;
-user us ;
+    user us ;
     TextView tvAvatar;
     private AlertDialog.Builder builder;
     private AlertDialog dialog; // Khai báo biến dialog là biến toàn cục
@@ -75,7 +71,7 @@ user us ;
         EditText edEmail = (EditText) dialogView.findViewById(R.id.ed_User_Email);
         EditText edPhone = (EditText) dialogView.findViewById(R.id.ed_User_Phone);
 
-       edPass.setText(us.getPassword());
+        edPass.setText(us.getPassword());
         edName.setText(us.getUserName());
         edEmail.setText(us.getEmail());
         edPhone.setText(us.getPhoneNumber());
@@ -88,7 +84,6 @@ user us ;
             us.setPhoneNumber(edPhone.getText().toString());
             us.setAvatar(selectedAvatar);
             hinhanh();
-
             if (us.getUserName().isEmpty()) {
                 Toast.makeText(Admin_User_Activity.this, "Nhập dữ liệu không hợp lệ", Toast.LENGTH_LONG).show();
             } else {
@@ -105,7 +100,6 @@ user us ;
         });
         alertDialog.create();
         alertDialog.show();
-
         // Gan su kien click cho button chon hinh anh
         btAvatar = dialogView.findViewById(R.id.btAvatar1);
         btAvatar.setOnClickListener(new View.OnClickListener() {
@@ -183,8 +177,6 @@ user us ;
     }
         @Override
     public void onItemClick(int id) {
-
-
     }
 
 
