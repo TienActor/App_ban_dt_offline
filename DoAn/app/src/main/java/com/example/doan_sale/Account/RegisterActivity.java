@@ -1,7 +1,6 @@
 package com.example.doan_sale.Account;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.res.Resources;
 import android.database.Cursor;
