@@ -1,14 +1,11 @@
 package com.example.doan_sale.Admin;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-
 import com.example.doan_sale.model.user;
 import com.example.doan_sale.ui.DBHelper;
 import com.example.doan_sale.ui.Ultils;
-
 import java.util.ArrayList;
 
 public class UserDataQuery {
@@ -24,7 +21,6 @@ public class UserDataQuery {
         long rs = sqLiteDatabase.insert(Ultils.TABLE_USER, null, cv);
         return (rs);
     }
-
     //lay danh sach
     public static ArrayList<user> getAll(Context context) {
         ArrayList<user> lstUser = new ArrayList<>();
