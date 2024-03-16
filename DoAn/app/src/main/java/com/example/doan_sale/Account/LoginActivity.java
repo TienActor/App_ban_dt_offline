@@ -1,8 +1,6 @@
 package com.example.doan_sale.Account;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,7 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.doan_sale.Admin.AdminActivity;
 import com.example.doan_sale.R;
 import com.example.doan_sale.model.user;
