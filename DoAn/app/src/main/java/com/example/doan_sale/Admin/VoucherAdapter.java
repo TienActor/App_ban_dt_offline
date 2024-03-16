@@ -1,19 +1,15 @@
 package com.example.doan_sale.Admin;
-
 import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.doan_sale.R;
 import com.example.doan_sale.model.Voucher;
 import com.example.doan_sale.ui.DBHelper;
-
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -27,14 +23,12 @@ public class VoucherAdapter extends RecyclerView.Adapter<VoucherAdapter.VoucherV
         this.voucherList = voucherList;
     }
     private DBHelper dbHelper;
-
     @NonNull
     @Override
     public VoucherViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.voucher_item, parent, false);
         return new VoucherViewHolder(view);
     }
-
     @Override
     public void onBindViewHolder(@NonNull VoucherViewHolder holder, int position) {
         Voucher voucher = voucherList.get(position);
@@ -70,14 +64,11 @@ public class VoucherAdapter extends RecyclerView.Adapter<VoucherAdapter.VoucherV
     public int getItemCount() {
         return voucherList.size();
     }
-
     public class VoucherViewHolder extends RecyclerView.ViewHolder {
-
         TextView textViewVoucherCode;
         TextView textViewVoucherDiscount;
         TextView textViewVoucherStart;
         TextView textViewVoucherEnd;
-
         public VoucherViewHolder(@NonNull View itemView) {
             super(itemView);
             textViewVoucherCode = itemView.findViewById(R.id.text_view_voucher_code);
